@@ -1,0 +1,66 @@
+version: "3"
+
+services:
+  backend:
+    build: ./backend
+    links:
+      - redis:redis
+    volumes:
+      - ./backend/:/backend 
+      - /static:/static
+    working_dir: /backend/
+    command: sh entrypoint.sh
+    depends_on:
+        - db
+
+  redis:
+    restart: always
+    image: redis:latest
+    expose:
+      - "6379"
+
+  frontend:
+    image: node:12.7
+    command: sh entrypoint.sh
+    working_dir: /frontend
+    volumes:
+      - ./frontend/:/frontend
+
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8181:8080
+    volumes:
+      - ./nginx/nginx-proxy.conf:/etc/nginx/conf.d/default.conf:ro
+      - /static:/static
+    depends_on:
+      - backend
+
+  db:
+    image: mysql
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+        MYSQL_DATABASE: 'custom-bitly-db'
+        MYSQL_USER: 'sysdba'
+        MYSQL_PASSWORD: 'masterkey'
+        MYSQL_ROOT_PASSWORD: 'masterkey'
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: on-failure
+    environment:
+      ADMINER_DB: custom-bitly-db
+      ADMINER_DRIVER: mysql
+      ADMINER_PASSWORD: masterkey
+      ADMINER_SERVER: db
+      ADMINER_USERNAME: sysdba
+      ADMINER_AUTOLOGIN: 1
+      ADMINER_NAME: adminer!
+    depends_on:
+      - db

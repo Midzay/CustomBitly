@@ -1,0 +1,55 @@
+.DS_Store
+node_modules
+/dist
+.directory
+
+
+# local env files
+.env.local
+.env.*.local
+env
+
+
+mysql-data
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.rebuild.compose
+
+
+# Python bytecode:
+*.py[co]
+__pycache__
+
+# Packaging files:
+*.egg*
+
+# Editor temp files:
+*.swp
+*~
+
+# Sphinx docs:
+build
+
+# SQLite3 database files:
+*.db
+
+# Celerybeat scheduler file:
+celerybeat-schedule
+ENV
+/backend/staticfiles/
+/backend/static
+/venv/
+
+/backend/backend.log

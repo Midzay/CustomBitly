@@ -1,0 +1,15 @@
+asgiref==3.2.7
+click==7.1.2
+Django==3.0.6
+django-redis==4.11.0
+djangorestframework==3.11.0
+h11==0.9.0
+httptools==0.1.1
+mysqlclient==1.4.6
+pytz==2020.1
+redis==3.5.0
+sqlparse==0.3.1
+uvicorn==0.11.5
+uvloop==0.14.0
+websockets==8.1
+short-url==1.2.2
