@@ -1,6 +1,7 @@
 
  - Запуск: docker-compose up
- - Настройка  expiries сессий и cache_ttl Redis  - /api/admin  
+ - в браузере localhost:8181
+ - Настройка cache_ttl Redis  - /api/admin  
  `login: root`
 ` password: root123456`
 
