@@ -11,5 +11,5 @@ redis==3.5.0
 sqlparse==0.3.1
 uvicorn==0.11.5
 uvloop==0.14.0
-websockets==8.1
+websockets==9.1
 short-url==1.2.2
